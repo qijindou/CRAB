@@ -1,0 +1,115 @@
+{
+    "task_info":{
+      "label_type": "multi_label",
+      "hierarchical": false,
+      "AL": true
+    },
+    "device": "cuda",
+    "checkpoint_dir": "checkpoint",
+    "model_dir": "trained_model",
+    "n_calcu": 50,
+    "alpha": 0.1, 
+    "beta": 3,
+    "early_stop": 30,
+    "data": {
+      "train_json_files": [
+        "demoData/rcv1_train_meanir_10.json"
+      ],
+      "vali_json_files": [
+        "demoData/rcv1_vali_meanir_10.json"
+      ],
+      "test_json_files": [
+        "demoData/rcv1_test_meanir_10.json"
+      ],
+      "generate_dict_using_json_files": true,
+      "generate_dict_using_all_json_files": true,
+      "generate_dict_using_pretrained_embedding": false,
+      "generate_hierarchy_label": true,
+      "dict_dir": "dict",
+      "num_worker": 16
+    },
+    "feature": {
+      "feature_names": [
+        "token"
+      ],
+      "min_token_count": 2,
+      "min_char_count": 2,
+      "token_ngram": 0,
+      "min_token_ngram_count": 0,
+      "min_keyword_count": 0,
+      "min_topic_count": 2,
+      "max_token_dict_size": 1000000,
+      "max_char_dict_size": 150000,
+      "max_token_ngram_dict_size": 10000000,
+      "max_keyword_dict_size": 100,
+      "max_topic_dict_size": 100,
+      "max_token_len": 256,
+      "max_char_len": 1024,
+      "max_char_len_per_token": 4,
+      "token_pretrained_file": "",
+      "keyword_pretrained_file": ""
+    },
+    "train": {
+      "batch_size": 50,
+      "start_epoch": 1,
+      "num_epochs": 80,
+      "num_epochs_static_embedding": 0,
+      "decay_steps": 1000,
+      "decay_rate": 1.0,
+      "clip_gradients": 100.0,
+      "l2_lambda": 0.0,
+      "loss_type": "BCEWithLogitsLoss",
+      "sampler": "fixed",
+      "num_sampled": 5,
+      "visible_device_list": "0",
+      "hidden_layer_dropout": 0.5
+    },
+    "embedding": {
+      "type": "embedding",
+      "dimension": 64,
+      "region_embedding_type": "context_word",
+      "region_size": 5,
+      "initializer": "uniform",
+      "fan_mode": "FAN_IN",
+      "uniform_bound": 0.25,
+      "random_stddev": 0.01,
+      "dropout": 0.0
+    },
+    "optimizer": {
+      "optimizer_type": "AdamW",
+      "learning_rate": 0.005,
+      "adadelta_decay_rate": 0.95,
+      "adadelta_epsilon": 1e-08,
+      "warmup_percentage": 0.1
+    },
+    "TextCNN": {
+      "kernel_sizes": [
+        2,
+        3,
+        4
+      ],
+      "num_kernels": 100,
+      "top_k_max_pooling": 1
+    },
+    "TextRNN": {
+      "hidden_dimension": 64,
+      "rnn_type": "GRU",
+      "num_layers": 1,
+      "doc_embedding_type": "Attention",
+      "attention_dimension": 16,
+      "bidirectional": true
+    },
+    "eval": {
+      "text_file": "../Dataset/RCV1/rcv1_test_top10.json",
+      "threshold": 0.5,
+      "dir": "probs",
+      "batch_size": 50,
+      "is_flat": true,
+      "top_k": 10
+    },
+    "log": {
+      "logger_file_dir": "log",
+      "log_level": "info"
+    }
+  }
+  
