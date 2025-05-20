@@ -1,4 +1,4 @@
-# CRAB: Multi-Label Bayesian Active Learning with Inter-Label Relationships
+# 🦀CRAB: Multi-Label Bayesian Active Learning with Inter-Label Relationships
 This is the official implementation of CRAB (CoRrelation-Aware active learning with Beta scoring rules), as proposed in: Multi-Label Bayesian Active Learning with Inter-Label Relationships ([paper link](https://arxiv.org/abs/2406.09008)).
 
 
