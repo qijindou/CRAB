@@ -5,7 +5,7 @@ This is the official implementation of CRAB (CoRrelation-Aware active learning w
 ## ⚙️ Installation
 ```
 conda env create -f environment.yml
-conda activate your-env-name
+conda activate crab
 ```
 
 ## 💡 Usage
